@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
-// import components
-
+import AnswerButton from './AnswerButton';
+import QuestionText from './QuestionText';
+import ResetButton from './ResetButton';
 
 class Question extends Component {
   
   render() {
     return (
-      <div>
-        Add your QuestionText, Reset Button and AnswerButtons here.  
+      <div className="question">
+         <QuestionText/>
+         <AnswerButton/>
+         <AnswerButton/>
+         <AnswerButton/>
+         <AnswerButton/>
+         <ResetButton/>
       </div>
     );
   }
