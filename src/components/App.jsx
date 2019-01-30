@@ -5,9 +5,13 @@ import Question from './Question';
 class App extends Component {
 
   render() {
+     
     return (
       <div className="app">
-        <Question/>
+        <Question question = {{ 
+          title : "Test" ,
+          answers : ["Red", "Blue", "Green", "Orange"]
+        }}/>
       </div>
     );
   }

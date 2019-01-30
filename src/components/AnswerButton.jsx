@@ -5,7 +5,9 @@ class AnswerButton extends React.Component {
   render() {
     return (
       <div className="answerbutton">
-        <button>Answer Button</button>
+        <button>
+          {this.props.answerText}
+        </button>
     </div>
     );
   }

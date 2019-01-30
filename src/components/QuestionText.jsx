@@ -5,7 +5,7 @@ class QuestionText extends React.Component {
   render() {
     return (
       <div className="questiontext">
-        <h1>What's your favorite color?</h1>
+        <h1>{this.props.question}</h1>
       </div>
     );
   }
