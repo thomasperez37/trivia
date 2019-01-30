@@ -1,0 +1,13 @@
+.question {
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+.answers {
+    background-color: blue;
+    display: flex;
+    width : 300px;
+    /*margin: 0 auto;*/
+    flex-flow : row wrap;
+}
