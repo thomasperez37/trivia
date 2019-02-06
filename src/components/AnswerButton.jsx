@@ -3,6 +3,7 @@ import '../css/AnswerButton.css';
 
 class AnswerButton extends React.Component {
   render() {
+    const myClickHandler = () => console.log("paty");
     return (
       <div className="answerbutton">
         <button>
