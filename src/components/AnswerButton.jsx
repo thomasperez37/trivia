@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import '../css/AnswerButton.css';
 
-class AnswerButton extends React.Component {
+class AnswerButton extends Component {
   render() {
-    const myClickHandler = () => console.log("paty");
+    const {index,handler} = this.props;
     return (
       <div className="answerbutton">
-        <button>
+        <button onClick={() => handler(index)}>
           {this.props.answerText}
         </button>
     </div>

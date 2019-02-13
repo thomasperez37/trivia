@@ -24,6 +24,7 @@ class App extends Component {
     firebaseDatabase.ref('/questions').on('value', (snapshot)=> {
       let questions = snapshot.val();
       let randomQuestion = getRandomQuestion(questions);
+      console.log(randomQuestion);
       this.setState({
         questions,
         currentQuestion : randomQuestion,
@@ -35,11 +36,13 @@ class App extends Component {
   
   
   render(){
+    const questionHolder = this.state.currentQuestion
     return (
       <div className="app">
         <Question question = {{ 
-          title : this.state.currentQuestion.question_text ,
-          answers : this.state.currentQuestion.choices
+          title : questionHolder.question_text ,
+          answers : questionHolder.choices,
+          correctAnswer : questionHolder.correct_choice_index
         }}/>
       </div>
     );
