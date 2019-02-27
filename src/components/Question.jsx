@@ -17,20 +17,37 @@ class Question extends Component {
   
   
   render() {
-      
+    
+    const chosenIndex = this.state.chosenIndex;
     const question = this.props.question;
-    console.log(this.state.chosenIndex);
-    return (
-      <div className="question">
-        <QuestionText question={question.title}/>
-        <div className= "answers">
-            {question.answers.map((answerText, i) => (
-              <AnswerButton answerText={answerText} handler={this.handleClick} index={i}/>
-            ))}
-        </div>
-        <ResetButton/>
-      </div>
-    );
+    const renderChoice = () => {
+      if (chosenIndex === null){
+        return (
+          <div className="question">
+            <QuestionText question={question.title}/>
+            <div className= "answers">
+                {question.answers.map((answerText, i) => (
+                  <AnswerButton answerText={answerText} handler={this.handleClick} index={i}/>
+                ))}
+            </div>
+            <ResetButton/>
+          </div>
+        );
+      } else if (chosenIndex === question.correctAnswer){
+        return (
+          <div className="question">
+            <QuestionText question={question.title}/>
+            <div className= "answers">
+                {question.answers.map((answerText, i) => (
+                  <AnswerButton answerText={answerText} correct={ i === question.correctAnswer } handler={this.handleClick} index={i}/>
+                ))}
+            </div>
+            <ResetButton/>
+          </div>
+        );
+      }
+    }
+    return renderChoice();
   }
 }
 
