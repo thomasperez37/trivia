@@ -33,13 +33,13 @@ class App extends Component {
     
   }
   
-  
+  handleClick = () => this.setState({currentQuestion:getRandomQuestion(this.state.questions)})
   
   render(){
     const questionHolder = this.state.currentQuestion
     return (
       <div className="app">
-        <Question question = {{ 
+        <Question reset={this.handleClick} question={{ 
           title : questionHolder.question_text ,
           answers : questionHolder.choices,
           correctAnswer : questionHolder.correct_choice_index
