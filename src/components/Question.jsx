@@ -15,11 +15,14 @@ class Question extends Component {
   
   handleClick = (index) => this.setState({chosenIndex: index})
   
+  resetIndex = () => this.setState({chosenIndex: null})
   
   render() {
     
     const chosenIndex = this.state.chosenIndex;
     const question = this.props.question;
+    const resetQuestion = this.props.reset;
+    const resetIndex = this.resetIndex;
     const renderChoice = () => {
       if (chosenIndex === null){
         return (
@@ -30,7 +33,7 @@ class Question extends Component {
                   <AnswerButton answerText={answerText} handler={this.handleClick} index={i}/>
                 ))}
             </div>
-            <ResetButton/>
+            <ResetButton handle={{resetQuestion,resetIndex}}/>
           </div>
         );
       } else if (chosenIndex === question.correctAnswer){
@@ -42,10 +45,22 @@ class Question extends Component {
                   <AnswerButton answerText={answerText} correct={ i === question.correctAnswer } handler={this.handleClick} index={i}/>
                 ))}
             </div>
-            <ResetButton/>
+            <ResetButton handle={{resetQuestion,resetIndex}}/>
           </div>
         );
-      }
+      } else if (chosenIndex !== question.correctAnswer){
+        return (
+          <div className="question">
+            <QuestionText question={question.title}/>
+            <div className= "answers">
+                {question.answers.map((answerText, i) => (
+                  <AnswerButton answerText={answerText} incorrect={ true } handler={this.handleClick} index={i}/>
+                ))}
+            </div>
+            <ResetButton handle={{resetQuestion,resetIndex}}/>
+          </div>
+        );
+      }  
     }
     return renderChoice();
   }

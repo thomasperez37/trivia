@@ -3,9 +3,14 @@ import '../css/ResetButton.css';
 
 class ResetButton extends React.Component {
   render() {
+    const {handle: {resetQuestion,resetIndex}} = this.props;
+    console.log("win",resetQuestion,resetIndex);
     return (
       <div className="resetbutton">
-        <button>
+        <button onClick={() => {
+          resetIndex()
+          return resetQuestion()
+        }}>
         Reset
         </button>
       </div>
